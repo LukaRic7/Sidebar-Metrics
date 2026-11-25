@@ -1,0 +1,25 @@
+# .NET build outputs
+**/bin/
+**/obj/
+.vs/
+TestResults/
+artifacts/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# AutoHotkey and generated build output
+build/
+dist/
+compiled/
+*.spec
+*.tmp
+metrics.json
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Local build notes
+build.md
