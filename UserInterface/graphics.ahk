@@ -102,7 +102,7 @@ class SidebarApp {
             y := 62
         } else {
             for sectionIndex, section in this.layout["sections"] {
-                iconPath := section["icon"]
+                iconPath := HM_ResolveIconPath(section["icon"])
                 headerHeight := Max(20, Ceil(headerSize * 1.8))
                 descriptorHeight := Max(16, Ceil(Max(7, textSize - 1) * 1.8))
                 iconSize := Min(40, Max(24, headerHeight))

@@ -546,7 +546,7 @@ class HMSectionDialog {
             this.nameEdit.Value := section["name"]
             this.descriptorEdit.Value := section["descriptor"]
             for index, path in this.icons {
-                if (path = section["icon"])
+                if (path = HM_ResolveIconPath(section["icon"]))
                     this.iconChoice.Value := index
             }
         } else if (this.icons.Length > 0) {
@@ -569,7 +569,8 @@ class HMSectionDialog {
             return
         }
         index := this.iconChoice.Value
-        icon := index > 0 && index <= this.icons.Length ? this.icons[index] : ""
+        iconPath := index > 0 && index <= this.icons.Length ? this.icons[index] : ""
+        icon := HM_StoreIconPath(iconPath)
         if this.section {
             this.section["name"] := name
             this.section["descriptor"] := Trim(this.descriptorEdit.Value)

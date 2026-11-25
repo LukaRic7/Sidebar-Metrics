@@ -26,6 +26,10 @@ HM_LoadLayout() {
         if !layout.Has("side")
             layout["side"] := "right"
         HM_NormalizeLayoutSettings(layout)
+        for section in layout["sections"] {
+            if section.Has("icon")
+                section["icon"] := HM_StoreIconPath(section["icon"])
+        }
         return layout
     } catch as err {
         MsgBox(
@@ -60,6 +64,27 @@ HM_SaveLayout(layout) {
         FileDelete(temporary)
     FileAppend(HM_JsonStringify(layout), temporary, "UTF-8-RAW")
     FileMove(temporary, path, 1)
+}
+
+HM_StoreIconPath(path) {
+    if (path = "")
+        return ""
+    marker := "\assets\"
+    assetPosition := InStr(path, marker, false, -1)
+    if assetPosition {
+        relativePath := "assets\" SubStr(path, assetPosition + StrLen(marker))
+        if FileExist(A_ScriptDir "\" relativePath)
+            return relativePath
+    }
+    return path
+}
+
+HM_ResolveIconPath(path) {
+    if (path = "")
+        return ""
+    if RegExMatch(path, "i)^(?:[A-Z]:\\|\\\\)")
+        return path
+    return A_ScriptDir "\" path
 }
 
 HM_LayoutPath() {

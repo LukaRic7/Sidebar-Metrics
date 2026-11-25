@@ -40,6 +40,7 @@ HardwareMonitor_StartDaemon(timeoutMs := 20000) {
 
 HardwareMonitor_FindDaemon() {
     candidates := [
+        A_ScriptDir "\HardwareMonitor.Service\HardwareMonitor.Service.exe",
         A_ScriptDir "\..\HardwareMonitor.Service\bin\Release\net8.0-windows\HardwareMonitor.Service.exe",
         A_ScriptDir "\..\HardwareMonitor.Service\bin\Release\net8.0-windows\win-x64\publish\HardwareMonitor.Service.exe",
         A_ScriptDir "\..\HardwareMonitor.Service\bin\Debug\net8.0-windows\HardwareMonitor.Service.exe"
